@@ -28,19 +28,28 @@ public class GameController {
     @GetMapping("/{gameId}")
     public ResponseEntity<Game> getGame(@PathVariable String gameId) {
         Game game = gameService.getGame(gameId);
-        return game != null ? ResponseEntity.ok(game) : ResponseEntity.notFound().build();
+
+        return game != null 
+        ? ResponseEntity.ok(game) 
+        : ResponseEntity.notFound().build();
     }
 
     @PostMapping("/{gameId}/join")
     public ResponseEntity<Game> joinGame(@PathVariable String gameId, @RequestParam String playerId) {
         Game game = gameService.joinGame(gameId, playerId);
-        return game != null ? ResponseEntity.ok(game) : ResponseEntity.notFound().build();
+
+        return game != null 
+        ? ResponseEntity.ok(game) 
+        : ResponseEntity.notFound().build();
     }
 
     @PostMapping("/{gameId}/move")
     public ResponseEntity<Game> makeMove(@PathVariable String gameId, @RequestBody MoveRequest move) {
         Game game = gameService.makeMove(gameId, move.getColumn(), move.getPlayerId());
-        return game != null ? ResponseEntity.ok(game) : ResponseEntity.badRequest().build();
+        
+        return game != null 
+        ? ResponseEntity.ok(game) 
+        : ResponseEntity.badRequest().build();
     }
 
     @GetMapping
