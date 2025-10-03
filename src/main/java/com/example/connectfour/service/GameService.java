@@ -33,9 +33,11 @@ public class GameService {
             return null;
 
         if (game.getPlayer1() == null) {
-            GamePlayer player1 = new GamePlayer(playerId, Game.Player.PLAYER_1);//game.setPlayer1Id(playerId);
+            GamePlayer player1 = new GamePlayer(playerId, Game.Player.PLAYER_1);
+            game.setPlayer1(player1);
         } else if (game.getPlayer2() == null) {
-           GamePlayer player2 = new GamePlayer(playerId, Game.Player.PLAYER_2); //game.setPlayer2Id(playerId);
+           GamePlayer player2 = new GamePlayer(playerId, Game.Player.PLAYER_2);
+            game.setPlayer2(player2);
             game.setStatus(Game.Status.IN_PROGRESS);
         }
         return game;
