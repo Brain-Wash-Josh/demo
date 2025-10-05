@@ -45,13 +45,13 @@ public class GameService {
 
     public Game makeMove(String gameId, int column, String playerId) {
         Game game = games.get(gameId);
-        if (game == null || !game.getStatus().equals("playing")) {
+        if (game == null || game.getStatus() != Status.IN_PROGRESS) {
             return null;
         }
 
         // Verify it's the player's turn
-        if ((game.getCurrentPlayer() == Player.PLAYER_1 && !playerId.equals(game.getPlayer1())) ||
-                (game.getCurrentPlayer() == Player.PLAYER_2 && !playerId.equals(game.getPlayer2()))) {
+        if ((game.getCurrentPlayer() == Player.PLAYER_1 && !playerId.equals(game.getPlayer1().getId())) ||
+                (game.getCurrentPlayer() == Player.PLAYER_2 && !playerId.equals(game.getPlayer2().getId()))) {
             return null;
         }
 
